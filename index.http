@@ -1,0 +1,31 @@
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Access-Control-Allow-Origin: *
+Server: netcat!
+
+<!doctype html>
+<html>
+	<head>
+		<style>
+			pre{ white-space:pre-wrap; word-wrap:break-word; }
+			body {background-color: #000; color: #FFF;}
+		</style>
+	</head>
+	<body id="tty-screen">
+
+	</body>
+	<script>
+		function refreshTty() {	
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4){
+					document.getElementById('tty-screen').innerHTML = xhr.responseText;
+				}
+			};
+			xhr.open('GET', 'http://localhost:8001');
+			xhr.send();
+		}
+
+		setInterval(function(){ refreshTty(); }, 500);
+	</script>
+</html>
