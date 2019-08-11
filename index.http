@@ -22,7 +22,7 @@ Server: netcat!
 					document.getElementById('tty-screen').innerHTML = xhr.responseText;
 				}
 			};
-			xhr.open('GET', 'http://localhost:8001');
+			xhr.open('GET', 'http://IP_ADDR:8001');
 			xhr.send();
 		}
 
